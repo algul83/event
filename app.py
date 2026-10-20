@@ -37,7 +37,7 @@ st.markdown(
     """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap');
-    header[data-testid="stHeader"], footer, #MainMenu,
+    header[data-testid="stHeader"], footer:not(.site-footer), #MainMenu,
     [data-testid="stToolbar"], [data-testid="stDecoration"],
     [data-testid="stStatusWidget"] {display:none !important;}
     .stApp {background:#F3F5F9;}
