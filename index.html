@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Access 퀴즈 이벤트 | AccessMedicine</title>
+<meta name="description" content="AccessMedicine 퀴즈를 풀고 모바일 커피 쿠폰을 받아 가세요. 추첨 10명.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Gothic+A1:wght@800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B3D7A; --navy-dark:#072A55;
+    --accent:#C8102E; --accent-dark:#A00D25;
+    --ink:#15213A; --muted:#4A5672;
+    --ground:#F3F5F9; --line:#C9D2E3; --white:#FFFFFF;
+    --gutter:24px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:'IBM Plex Sans KR',system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+    line-height:1.6;word-break:keep-all;overflow-wrap:break-word}
+  a{color:var(--navy)} a:hover{color:var(--navy-dark)}
+  a:focus-visible{outline:3px solid #F2B705;outline-offset:3px}
+  .wrap{max-width:1120px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+  .display{font-family:'Gothic A1','IBM Plex Sans KR',sans-serif;letter-spacing:-0.02em}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:16px 32px;
+    background:var(--accent);color:var(--white);font-weight:700;font-size:18px;text-decoration:none;transition:background .15s}
+  .btn:hover{background:var(--accent-dark);color:var(--white)}
+  .link-light{display:inline-flex;align-items:center;min-height:56px;padding:16px 8px;color:var(--white);
+    font-weight:600;font-size:17px;text-underline-offset:4px}
+  .link-light:hover{color:#DCE6F4}
+
+  /* Header */
+  .hero{background:var(--navy);color:var(--white)}
+  .topbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding-top:20px;padding-bottom:20px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px;letter-spacing:.02em}
+  .brand i{display:inline-block;width:12px;height:12px;background:var(--accent)}
+  .top-cta{display:inline-flex;align-items:center;min-height:44px;padding:10px 18px;color:var(--white);
+    border:1px solid rgba(255,255,255,.6);font-weight:600;font-size:15px;text-decoration:none}
+  .top-cta:hover{background:rgba(255,255,255,.1);color:var(--white)}
+  .hero-body{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:48px;align-items:end;padding-top:72px;padding-bottom:96px}
+  .eyebrow{margin:0 0 20px;font-size:15px;font-weight:600;color:#B9CCE8;letter-spacing:.08em}
+  .hero h1{margin:0;font-weight:900;font-size:clamp(36px,6vw,76px);line-height:1.12}
+  .lead{margin:28px 0 0;font-size:19px;color:#DCE6F4;max-width:560px}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+  .prize{background:var(--white);color:var(--ink);padding:32px}
+  .prize .label{margin:0;font-size:14px;font-weight:600;color:var(--muted)}
+  .prize .big{margin:8px 0 0;font-weight:900;font-size:56px;line-height:1;color:var(--accent)}
+  .prize .sub{margin:12px 0 0;font-size:18px;font-weight:600}
+  .prize hr{border:0;height:1px;background:#DDE3EE;margin:24px 0}
+  .row{display:flex;justify-content:space-between;gap:16px;font-size:15px}
+  .row + .row{margin-top:8px}
+  .row span:first-child{color:var(--muted)} .row span:last-child{font-weight:700;text-align:right}
+
+  /* Sections */
+  section{padding-top:48px;padding-bottom:48px}
+  .sec-first{padding-top:96px}
+  h2.title{margin:0;font-weight:800;font-size:clamp(26px,3.4vw,40px);letter-spacing:-0.01em;line-height:1.3}
+  .desc{margin:12px 0 0;font-size:17px;color:var(--muted)}
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}
+  .step{background:var(--white);padding:32px;display:flex;flex-direction:column;gap:12px}
+  .step .num{font-family:'Gothic A1',sans-serif;font-weight:900;font-size:40px;line-height:1;color:var(--navy)}
+  .step h3{margin:0;font-size:20px;font-weight:700}
+  .step p{margin:0;font-size:16px;color:var(--muted)}
+  .step a{margin-top:auto;padding-top:8px;min-height:44px;display:inline-flex;align-items:center;font-weight:600;font-size:16px}
+  .features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:32px;margin-top:40px;border-top:2px solid var(--ink)}
+  .feature{padding:28px 0;border-bottom:1px solid var(--line)}
+  .feature .tag{margin:0;font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.06em}
+  .feature h3{margin:8px 0 0;font-size:21px;font-weight:700}
+  .feature p{margin:8px 0 0;font-size:16px;color:var(--muted)}
+  .sec-last{padding-bottom:96px}
+  .closing{background:var(--navy);color:var(--white);padding:clamp(32px,5vw,64px);display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between}
+  .closing h2{margin:0;font-weight:800;font-size:clamp(24px,3vw,36px);line-height:1.35}
+
+  /* Footer */
+  footer{background:#E6EAF2;color:#3E4A63;font-size:14px}
+  footer .wrap{padding-top:48px;padding-bottom:48px}
+  footer h2{margin:0 0 12px;font-size:15px;font-weight:700;color:var(--ink)}
+  footer p{margin:0} footer p + p{margin-top:4px} footer .note{margin-top:24px}
+
+  /* Tablet */
+  @media (max-width: 960px){
+    .hero-body{grid-template-columns:1fr;gap:40px;padding-top:56px;padding-bottom:72px}
+    .prize{max-width:480px}
+    .steps{grid-template-columns:1fr 1fr}
+    .steps .step:last-child{grid-column:1 / -1}
+    .features{grid-template-columns:1fr 1fr}
+  }
+  /* Mobile */
+  @media (max-width: 600px){
+    :root{--gutter:16px}
+    .topbar{padding-top:14px;padding-bottom:14px}
+    .brand{font-size:14px}
+    .top-cta{font-size:14px;padding:10px 14px}
+    .hero-body{padding-top:40px;padding-bottom:56px;gap:32px}
+    .eyebrow{font-size:13px;margin-bottom:14px}
+    .lead{font-size:17px;margin-top:20px}
+    .actions{flex-direction:column;align-items:stretch;margin-top:28px}
+    .actions .btn{width:100%}
+    .link-light{justify-content:center;min-height:48px;padding:8px}
+    .prize{padding:24px;max-width:none}
+    .prize .big{font-size:48px}
+    .sec-first{padding-top:64px}
+    section{padding-top:32px;padding-bottom:32px}
+    .sec-last{padding-bottom:64px}
+    .desc{font-size:16px}
+    .steps{grid-template-columns:1fr;gap:16px;margin-top:28px}
+    .steps .step:last-child{grid-column:auto}
+    .step{padding:24px}
+    .features{grid-template-columns:1fr;margin-top:28px}
+    .feature{padding:22px 0}
+    .closing{flex-direction:column;align-items:stretch;gap:24px}
+    .closing .btn{width:100%}
+    footer .wrap{padding-top:36px;padding-bottom:36px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap topbar">
+    <div class="brand"><i aria-hidden="true"></i><span>McGraw Hill · AccessMedicine</span></div>
+    <a class="top-cta" href="https://forms.cloud.microsoft/r/tUryMh37NE?origin=lprLink" target="_blank" rel="noopener">퀴즈 참여하기</a>
+  </div>
+  <div class="wrap hero-body">
+    <div>
+      <p class="eyebrow">QUIZ EVENT</p>
+      <h1 class="display">퀴즈 풀고<br>AccessMedicine<br>제대로 알아보기</h1>
+      <p class="lead">McGraw Hill의 전자정보 서비스 AccessMedicine. 이용자 가이드를 보며 퀴즈를 풀면 핵심 기능을 한 번에 익힐 수 있습니다.</p>
+      <div class="actions">
+        <a class="btn" href="https://forms.cloud.microsoft/r/tUryMh37NE?origin=lprLink" target="_blank" rel="noopener">지금 퀴즈 풀기</a>
+        <a class="link-light" href="https://mhpro.box.com/s/8mfebilez9oavseo2v73amgipabik7lu" target="_blank" rel="noopener">이용자 가이드 받기</a>
+      </div>
+    </div>
+    <aside class="prize" aria-label="참여 혜택">
+      <p class="label">참여 혜택</p>
+      <p class="big display">10명</p>
+      <p class="sub">추첨을 통해 모바일 커피 쿠폰 증정</p>
+      <hr>
+      <div class="row"><span>참여 방법</span><span>온라인 퀴즈 제출</span></div>
+    </aside>
+  </div>
+</header>
+
+<main>
+  <section class="wrap sec-first">
+    <h2 class="title display">참여 방법</h2>
+    <p class="desc">세 단계면 끝납니다. 정답의 힌트는 모두 이용자 가이드에 있어요.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="num">01</span>
+        <h3>이용자 가이드 다운로드</h3>
+        <p>아래 링크에서 AccessMedicine 이용자 가이드를 받아 주요 기능을 살펴보세요.</p>
+        <a href="https://mhpro.box.com/s/8mfebilez9oavseo2v73amgipabik7lu" target="_blank" rel="noopener">가이드 열기 →</a>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h3>온라인 퀴즈 풀기</h3>
+        <p>이름, 연락처, 소속 기관을 입력하고 Access 플랫폼 기능에 관한 퀴즈에 답해 주세요.</p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h3>제출하고 당첨 기다리기</h3>
+        <p>마감 후 참여자 중 10명을 추첨해 입력하신 휴대폰 번호로 모바일 커피 쿠폰을 보내드립니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2 class="title display">퀴즈에서 만나는 기능들</h2>
+    <p class="desc">문제를 풀다 보면 임상과 학습에 바로 쓸 수 있는 도구들이 눈에 들어옵니다.</p>
+    <div class="features">
+      <div class="feature">
+        <p class="tag">TEXTBOOK</p>
+        <h3>해리슨 내과학</h3>
+        <p>Harrison's Principles of Internal Medicine을 Access 플랫폼에서 바로 열람할 수 있습니다.</p>
+      </div>
+      <div class="feature">
+        <p class="tag">LITERATURE</p>
+        <h3>최신 논문 요약</h3>
+        <p>2 Minute Medicine®, ebpp® 등 최신 연구 요약과 원문 링크를 제공하는 기능을 확인해 보세요.</p>
+      </div>
+      <div class="feature">
+        <p class="tag">NEW · AI</p>
+        <h3>AI Reader</h3>
+        <p>원문에서 원하는 부분을 하이라이트하면 요약 설명과 연계 퀴즈를 만들어 주는 신규 기능입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap sec-last">
+    <div class="closing">
+      <h2 class="display">지금 퀴즈 풀고<br>커피 한 잔 받아 가세요</h2>
+      <a class="btn" href="https://forms.cloud.microsoft/r/tUryMh37NE?origin=lprLink" target="_blank" rel="noopener">지금 퀴즈 풀기</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2>개인정보 수집·이용 안내</h2>
+    <p>맥그로힐은 개인정보보호법 및 정보통신망 이용 촉진 및 정보보호에 관한 법률을 준수하며, 퀴즈 과정에서 수집한 개인정보는 아래 용도로만 사용됩니다.</p>
+    <p style="margin-top:8px">· 수집 항목: 소속 기관명, 이름, 연락처</p>
+    <p>· 이용 목적: 소속 기관의 퀴즈 이벤트 참여자 확인, 당첨자 모바일 쿠폰 발송</p>
+    <p class="note">AccessMedicine, Harrison's 및 관련 명칭은 McGraw Hill의 상표입니다.</p>
+  </div>
+</footer>
+
+</body>
+</html>
