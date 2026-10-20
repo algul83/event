@@ -19,7 +19,8 @@ HTML_PATH = Path(__file__).parent / "index.html"
 
 
 @st.cache_data
-def load_page(path: str) -> tuple[str, str]:
+def load_page(path: str, mtime: float) -> tuple[str, str]:
+    # mtime 을 캐시 키에 넣어 index.html 이 바뀌면 바로 다시 읽도록 함
     html = Path(path).read_text(encoding="utf-8")
     style = re.search(r"<style>(.*?)</style>", html, re.S).group(1)
     body = re.search(r"<body[^>]*>(.*?)</body>", html, re.S).group(1)
@@ -29,7 +30,7 @@ def load_page(path: str) -> tuple[str, str]:
     return style, body
 
 
-style, body = load_page(str(HTML_PATH))
+style, body = load_page(str(HTML_PATH), HTML_PATH.stat().st_mtime)
 
 # Streamlit 기본 여백·헤더·푸터 숨기기 + 폰트
 st.markdown(
