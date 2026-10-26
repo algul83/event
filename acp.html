@@ -218,6 +218,7 @@
     .hero-body{padding-top:44px}
     .feature{padding:22px}
   }
+  .sec-last{padding-bottom:40px}
 </style>
 </head>
 <body>
@@ -323,6 +324,100 @@
     </div>
   </section>
 </main>
+
+<!--SHARE:START-->
+<div class="share-band" data-url="https://acp-event.streamlit.app/" data-title="[McGraw Hill] AccessPharmacy 퀴즈 이벤트" data-text="AccessPharmacy 퀴즈 풀고 메가MGC커피 5,000원 금액권 받아 가세요! (추첨 50명)">
+<style>
+  .share-band{--sb-ink:#15213A;--sb-muted:#4A5672;--sb-accent:#006B3D;--sb-radius:999px;
+    font-family:'Noto Sans KR',system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:var(--sb-ink);word-break:keep-all}
+  .share-band *{box-sizing:border-box}
+  .share-band .sb-inner{max-width:1120px;margin:0 auto;padding:8px 24px 72px}
+  .share-band .sb-card{background:#FFFFFF;border-radius:16px;padding:28px 32px;display:flex;flex-wrap:wrap;gap:20px 32px;align-items:center;justify-content:space-between}
+  .share-band h2{margin:0;font-size:22px;font-weight:700;line-height:1.4}
+  .share-band p{margin:4px 0 0;font-size:15px;color:var(--sb-muted)}
+  .share-band .sb-actions{display:flex;flex-wrap:wrap;gap:8px}
+  .share-band button,.share-band a{appearance:none;font:inherit;font-size:15px;font-weight:600;min-height:44px;padding:10px 18px;
+    border-radius:var(--sb-radius);border:1.5px solid #CBD3E1;background:#FFFFFF;color:var(--sb-ink);text-decoration:none;cursor:pointer;
+    display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:background .15s,border-color .15s}
+  .share-band button:hover,.share-band a:hover{border-color:var(--sb-accent);color:var(--sb-accent)}
+  .share-band .sb-primary{background:var(--sb-accent);border-color:var(--sb-accent);color:#FFFFFF}
+  .share-band .sb-primary:hover{color:#FFFFFF;filter:brightness(.92)}
+  .share-band button:focus-visible,.share-band a:focus-visible{outline:3px solid #F2B705;outline-offset:2px}
+  .share-band .sb-toast{margin-top:12px;font-size:14px;color:var(--sb-accent);min-height:20px}
+  .share-band .sb-url{display:none;width:100%;margin-top:8px;padding:10px 12px;font:inherit;font-size:14px;border:1px solid #CBD3E1;border-radius:8px}
+  .share-band svg{width:18px;height:18px;flex:none}
+  @media (max-width:600px){
+    .share-band .sb-inner{padding:0 16px 56px}
+    .share-band .sb-card{padding:22px 20px}
+    .share-band h2{font-size:19px}
+    .share-band .sb-actions{width:100%}
+    .share-band .sb-actions .sb-primary,.share-band .sb-actions .sb-copy{flex:1 1 calc(50% - 4px)}
+    .share-band .sb-actions a{flex:1 1 calc(33.33% - 6px);padding:10px 8px;font-size:14px}
+  }
+</style>
+<div class="sb-inner">
+  <div class="sb-card">
+    <div>
+      <h2>친구에게도 알려주세요</h2>
+      <p>함께 퀴즈 풀고 메가커피 받아 가세요.</p>
+    </div>
+    <div>
+      <div class="sb-actions">
+        <button type="button" class="sb-primary sb-native">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>공유하기</button>
+        <button type="button" class="sb-copy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>링크 복사</button>
+        <a class="sb-fb" target="_blank" rel="noopener" href="#">페이스북</a>
+        <a class="sb-band" target="_blank" rel="noopener" href="#">밴드</a>
+        <a class="sb-mail" href="#">이메일</a>
+      </div>
+      <input class="sb-url" type="text" readonly aria-label="공유 링크">
+      <div class="sb-toast" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var root=document.currentScript.closest('.share-band');
+  var url=root.dataset.url, title=root.dataset.title, text=root.dataset.text;
+  var enc=encodeURIComponent;
+  root.querySelector('.sb-fb').href='https://www.facebook.com/sharer/sharer.php?u='+enc(url);
+  root.querySelector('.sb-band').href='https://band.us/plugin/share?body='+enc(text+'\n'+url)+'&route='+enc(url);
+  root.querySelector('.sb-mail').href='mailto:?subject='+enc(title)+'&body='+enc(text+'\n\n'+url);
+  var toast=root.querySelector('.sb-toast'), box=root.querySelector('.sb-url');
+  function say(m){toast.textContent=m;clearTimeout(say.t);say.t=setTimeout(function(){toast.textContent='';},3500);fit();}
+  function wins(){var w=[window];try{if(window.parent&&window.parent!==window&&window.parent.navigator)w.unshift(window.parent);}catch(e){}return w;}
+  function showBox(){box.style.display='block';box.value=url;box.focus();box.select();say('위 링크를 길게 누르거나 선택해서 복사해 주세요.');}
+  function copy(){
+    var ws=wins(), i=0;
+    function next(){
+      if(i>=ws.length){legacy();return;}
+      var w=ws[i++];
+      try{ if(w.navigator.clipboard&&w.isSecureContext){w.navigator.clipboard.writeText(url).then(function(){say('링크가 복사됐어요. 친구에게 붙여넣어 보내 주세요.');},next);return;} }catch(e){}
+      next();
+    }
+    function legacy(){
+      try{box.style.display='block';box.value=url;box.select();if(document.execCommand('copy')){box.style.display='none';say('링크가 복사됐어요. 친구에게 붙여넣어 보내 주세요.');return;}}catch(e){}
+      showBox();
+    }
+    next();
+  }
+  root.querySelector('.sb-copy').addEventListener('click',copy);
+  root.querySelector('.sb-native').addEventListener('click',function(){
+    var data={title:title,text:text,url:url}, ws=wins();
+    for(var k=0;k<ws.length;k++){
+      try{ var n=ws[k].navigator; if(n.share&&(!n.canShare||n.canShare(data))){ n.share(data).catch(function(err){ if(err&&err.name!=='AbortError') copy(); }); return; } }catch(e){}
+    }
+    copy();
+  });
+  function fit(){try{var f=window.frameElement;if(!f)return;var h=document.body.scrollHeight+'px';f.style.height=h;f.setAttribute('height',document.body.scrollHeight);var e=f.parentElement;for(var i=0;e&&i<4;i++,e=e.parentElement){if(e.style&&e.style.height){e.style.height=h;}if(e.dataset&&e.dataset.testid==='stVerticalBlock')break;}}catch(err){}}
+  window.addEventListener('load',fit); window.addEventListener('resize',fit); setTimeout(fit,300);
+  try{new ResizeObserver(fit).observe(document.body);}catch(e){}
+})();
+</script>
+</div>
+<!--SHARE:END-->
+
 
 <aside class="privacy" aria-label="개인정보 수집·이용 안내">
   <div class="wrap">

@@ -8,6 +8,7 @@ import re
 from pathlib import Path
 
 import streamlit as st
+import streamlit.components.v1 as components
 
 ROOT = Path(__file__).parent
 
@@ -59,9 +60,26 @@ def render(html_name: str, page_title: str) -> None:
             padding:0 !important; max-width:100% !important;
         }
         [data-testid="stVerticalBlock"] {gap:0 !important;}
+        /* 공유 영역 프레임이 내용 높이에 맞춰 늘어나도록 */
+        [data-testid="stElementContainer"]:has(> iframe) {height:auto !important;}
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-    st.html(f'<style>{style}</style><div class="aq-page">{body}</div>')
+    # 공유 버튼 영역은 스크립트가 필요해서 별도 프레임(components.html)으로 렌더링
+    m = re.search(r"<!--SHARE:START-->(.*?)<!--SHARE:END-->", body, re.S)
+    if not m:
+        st.html(f'<style>{style}</style><div class="aq-page">{body}</div>')
+        return
+    before, share, after = body[: m.start()], m.group(1), body[m.end():]
+    grounds = re.findall(r"--ground:(#[0-9A-Fa-f]{3,6})", style)
+    page_bg = grounds[-1] if grounds else "#F3F5F9"
+    st.html(f'<style>{style}</style><div class="aq-page">{before}</div>')
+    components.html(
+        "<!doctype html><html><head><meta charset='utf-8'>"
+        "<link href='https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap' rel='stylesheet'>"
+        f"<style>html,body{{margin:0;background:{page_bg}}}</style></head><body>{share}</body></html>",
+        height=190,
+    )
+    st.html(f'<style>{style}</style><div class="aq-page">{after}</div>')
