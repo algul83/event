@@ -38,6 +38,8 @@
   .hero{background:var(--navy);color:var(--white)}
   .topbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding-top:20px;padding-bottom:20px}
   .brand{display:flex;align-items:center;gap:18px;background:#FFFFFF;padding:10px 18px;border-radius:6px}
+  .brand a{display:block;line-height:0;border-radius:2px}
+  .brand a:hover{opacity:.8}
   .brand img{display:block;height:36px;width:auto}
   .brand .divider{width:1px;align-self:stretch;background:#D6DBE4}
   .top-cta{display:inline-flex;align-items:center;min-height:44px;padding:10px 18px;color:var(--white);
@@ -174,9 +176,9 @@
 <header class="hero">
   <div class="wrap topbar">
     <div class="brand">
-      <img src="assets/mcgrawhill-accessmedicine.svg" alt="McGraw Hill AccessMedicine">
+      <a href="https://accessmedicine.mhmedical.com/" target="_blank" rel="noopener" aria-label="AccessMedicine 바로가기"><img src="assets/mcgrawhill-accessmedicine.svg" alt="McGraw Hill AccessMedicine"></a>
       <span class="divider" aria-hidden="true"></span>
-      <img src="assets/onesglobal.png" alt="ONES Global">
+      <a href="https://plus.connectdi.com" target="_blank" rel="noopener" aria-label="커넥트디아이 플러스 바로가기"><img src="assets/onesglobal.png" alt="ONES Global"></a>
     </div>
     <a class="top-cta" href="https://forms.cloud.microsoft/r/tUryMh37NE?origin=lprLink" target="_blank" rel="noopener">퀴즈 참여하기</a>
   </div>
