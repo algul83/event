@@ -204,12 +204,18 @@
   @media (min-width: 961px){
     .hero-body{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
     .prize{display:grid;grid-template-columns:200px minmax(0,1fr);column-gap:24px;align-items:center}
-    .prize .label{grid-column:1 / -1;margin-bottom:14px}
+    .prize .prize-head{grid-column:1 / -1;margin-bottom:16px}
     .prize .gift{grid-column:1;grid-row:2 / span 2;margin:0;max-width:200px}
     .prize .big{grid-column:2;grid-row:2;align-self:end;margin:0}
     .prize .sub{grid-column:2;grid-row:3;align-self:start;font-size:16px}
     .prize hr,.prize .row{grid-column:1 / -1}
   }
+
+  /* 참여 혜택 카드 머리: 왼쪽 라벨, 오른쪽 이벤트 기간 */
+  .prize-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 12px}
+  .prize .period{margin:0;font-size:14px;color:var(--muted)}
+  .prize .period b{color:var(--ink);font-weight:700;margin-left:4px}
+  .prize .gift{margin-top:16px}
 </style>
 </head>
 <body>
@@ -239,13 +245,13 @@
       </div>
     </div>
     <aside class="prize" aria-label="참여 혜택">
-      <p class="label">참여 혜택</p>
+      <div class="prize-head">
+        <p class="label">참여 혜택</p>
+        <p class="period"><span>이벤트 기간</span> <b>~ 2026년 11월 30일(월)</b></p>
+      </div>
       <img class="gift" src="assets/megacoffee-5000.png" alt="메가MGC커피 5,000원 모바일 금액권">
       <p class="big display">50명</p>
       <p class="sub">추첨을 통해 메가MGC커피<br>5,000원 모바일 금액권&nbsp;증정</p>
-      <hr>
-      <div class="row"><span>이벤트 기간</span><span>~ 2026년 11월 30일(월)</span></div>
-      <div class="row"><span>참여 방법</span><span>온라인 퀴즈 제출</span></div>
     </aside>
   </div>
 </header>
