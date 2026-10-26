@@ -3,6 +3,7 @@
 index.html 의 스타일과 본문을 읽어 Streamlit 화면에 그대로 렌더링합니다.
 페이지 내용을 바꾸려면 index.html 만 수정하면 됩니다.
 """
+import base64
 import re
 from pathlib import Path
 
@@ -27,6 +28,17 @@ def load_page(path: str, mtime: float) -> tuple[str, str]:
     # 페이지 전용 스타일이 Streamlit 화면 전체에 번지지 않도록 body/html 규칙을 래퍼로 한정
     style = style.replace("html{-webkit-text-size-adjust:100%}", "")
     style = re.sub(r"(?m)^\s*body\{", "  .aq-page{", style)
+    # 로컬 이미지(assets/...)를 데이터 URI로 바꿔 Streamlit 화면에서도 보이게 함
+    base = Path(path).parent
+
+    def inline(m):
+        f = base / m.group(1)
+        if not f.exists():
+            return m.group(0)
+        mime = "image/svg+xml" if f.suffix == ".svg" else f"image/{f.suffix.lstrip('.')}"
+        return f'src="data:{mime};base64,{base64.b64encode(f.read_bytes()).decode()}"'
+
+    body = re.sub(r'src="(assets/[^"]+)"', inline, body)
     return style, body
 
 
