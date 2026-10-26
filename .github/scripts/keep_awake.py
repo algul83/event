@@ -8,8 +8,9 @@ import sys
 
 from playwright.sync_api import sync_playwright
 
-URL = "https://acm-event.streamlit.app/"
-EXPECTED_TEXT = "AccessMedicine"   # 앱이 정상적으로 떴을 때 화면에 있는 문구
+# 사용법: python keep_awake.py <앱 주소> <정상일 때 화면에 있는 문구>
+URL = sys.argv[1] if len(sys.argv) > 1 else "https://acm-event.streamlit.app/"
+EXPECTED_TEXT = sys.argv[2] if len(sys.argv) > 2 else "AccessMedicine"
 WAKE_BUTTON = re.compile(r"get this app back up", re.I)
 
 

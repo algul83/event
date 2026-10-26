@@ -9,6 +9,14 @@ on:
 jobs:
   ping:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - url: https://acm-event.streamlit.app/
+            text: AccessMedicine
+          - url: https://acp-event.streamlit.app/
+            text: AccessPharmacy
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
@@ -23,12 +31,12 @@ jobs:
           python -m playwright install --with-deps chromium
 
       - name: Visit app (wake if asleep)
-        run: python .github/scripts/keep_awake.py
+        run: python .github/scripts/keep_awake.py "${{ matrix.url }}" "${{ matrix.text }}"
 
       - name: Upload screenshot on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: keep-awake-failure
+          name: keep-awake-failure-${{ matrix.text }}
           path: keep_awake_failure.png
           if-no-files-found: ignore

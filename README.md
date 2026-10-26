@@ -1,5 +1,10 @@
 # Access 퀴즈 이벤트 페이지
 
+| 페이지 | 주소 | 메인 파일 | 내용 파일 |
+|---|---|---|---|
+| AccessMedicine | acm-event.streamlit.app | `app.py` | `index.html` |
+| AccessPharmacy | acp-event.streamlit.app | `acp_app.py` | `acp.html` |
+
 McGraw Hill AccessMedicine 퀴즈 이벤트 안내 페이지입니다. PC·태블릿·모바일 반응형.
 
 ## 파일 구성
