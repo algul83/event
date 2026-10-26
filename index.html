@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Access 퀴즈 이벤트 | AccessMedicine</title>
+<title>해리슨내과학은 AccessMedicine에서, 커피 쿠폰은 덤으로! | AccessMedicine 퀴즈 이벤트</title>
 <meta name="description" content="AccessMedicine 퀴즈를 풀고 메가MGC커피 5,000원 모바일 금액권을 받아 가세요. 추첨 50명, 11월 30일까지.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -186,6 +186,30 @@
     .top-cta .lg{display:none}
     .top-cta .sm{display:inline}
   }
+
+  /* 메인 카피: 페이지 전체 폭을 쓰는 2줄 제목 */
+  .hero-head{padding-top:72px}
+  .hero h1{font-size:clamp(30px,5vw,60px);line-height:1.2;margin-top:4px}
+  .hero h1 .h-line{display:block;white-space:nowrap}
+  .hero h1 .h-coffee{color:#FFD54A;margin-top:.1em}
+  .hero-body{padding-top:36px;align-items:start}
+  .hero-body .lead{margin-top:0}
+  @media (max-width: 960px){ .hero-head{padding-top:56px} .hero-body{padding-top:28px} }
+  @media (max-width: 600px){
+    .hero-head{padding-top:40px}
+    .hero h1 .h-line{white-space:normal}
+    .hero-body{padding-top:20px}
+  }
+  /* 데스크톱: 경품 카드를 가로형으로 */
+  @media (min-width: 961px){
+    .hero-body{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+    .prize{display:grid;grid-template-columns:200px minmax(0,1fr);column-gap:24px;align-items:center}
+    .prize .label{grid-column:1 / -1;margin-bottom:14px}
+    .prize .gift{grid-column:1;grid-row:2 / span 2;margin:0;max-width:200px}
+    .prize .big{grid-column:2;grid-row:2;align-self:end;margin:0}
+    .prize .sub{grid-column:2;grid-row:3;align-self:start;font-size:16px}
+    .prize hr,.prize .row{grid-column:1 / -1}
+  }
 </style>
 </head>
 <body>
@@ -202,11 +226,13 @@
       <a class="top-cta top-quiz" href="https://forms.cloud.microsoft/r/tUryMh37NE?origin=lprLink" target="_blank" rel="noopener"><span class="lg">퀴즈 참여하기</span><span class="sm">퀴즈 참여</span></a>
     </div>
   </div>
+  <div class="wrap hero-head">
+    <p class="eyebrow">QUIZ EVENT · ~ 2026. 11. 30</p>
+    <h1 class="display"><span class="h-line">해리슨내과학은 AccessMedicine에서,</span><span class="h-line h-coffee">커피 쿠폰은 덤으로!</span></h1>
+  </div>
   <div class="wrap hero-body">
     <div>
-      <p class="eyebrow">QUIZ EVENT · ~ 2026. 11. 30</p>
-      <h1 class="display">퀴즈 풀고<br>AccessMedicine<br>제대로 알아보기</h1>
-      <p class="lead">McGraw Hill의 전자정보 서비스 AccessMedicine. 이용자 가이드를 보며 퀴즈를 풀면 핵심 기능을 한 번에 익힐 수 있습니다.</p>
+      <p class="lead">무거운 교과서 대신 폰 하나로. 이용자 가이드 보며 퀴즈 풀고 메가커피도 받아 가세요.</p>
       <div class="actions">
         <a class="btn" href="https://forms.cloud.microsoft/r/tUryMh37NE?origin=lprLink" target="_blank" rel="noopener">지금 퀴즈 풀기</a>
         <a class="link-light" href="https://drive.google.com/file/d/1cGAACO47j8GT-y48kQFi8qCobJ8w7v4_/view?usp=sharing" target="_blank" rel="noopener">이용자 가이드 받기</a>
@@ -216,7 +242,7 @@
       <p class="label">참여 혜택</p>
       <img class="gift" src="assets/megacoffee-5000.png" alt="메가MGC커피 5,000원 모바일 금액권">
       <p class="big display">50명</p>
-      <p class="sub">추첨을 통해 메가MGC커피<br>5,000원 모바일 금액권 증정</p>
+      <p class="sub">추첨을 통해 메가MGC커피<br>5,000원 모바일 금액권&nbsp;증정</p>
       <hr>
       <div class="row"><span>이벤트 기간</span><span>~ 2026년 11월 30일(월)</span></div>
       <div class="row"><span>참여 방법</span><span>온라인 퀴즈 제출</span></div>
