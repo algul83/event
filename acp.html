@@ -228,10 +228,30 @@
     .top-cta .sm{display:inline}
   }
 
-  /* ACP 메인 카피: 두 줄 메시지가 길어 제목 크기를 조정 */
-  .hero h1{font-size:clamp(34px,4.6vw,58px);line-height:1.22}
-  .hero h1 .h-line{display:block}
-  .hero h1 .h-coffee{color:#FFD54A;margin-top:.12em}
+  /* ACP 메인 카피: 페이지 전체 폭을 쓰는 2줄 제목 */
+  .hero-head{padding-top:72px}
+  .hero h1{font-size:clamp(30px,5.3vw,64px);line-height:1.2;margin-top:4px}
+  .hero h1 .h-line{display:block;white-space:nowrap}
+  .hero h1 .h-coffee{color:#FFD54A;margin-top:.1em}
+  .hero-body{padding-top:36px;align-items:start}
+  .hero-body .lead{margin-top:0}
+  @media (max-width: 960px){ .hero-head{padding-top:56px} .hero-body{padding-top:28px} }
+  @media (max-width: 600px){
+    .hero-head{padding-top:40px}
+    .hero h1 .h-line{white-space:normal}
+    .hero-body{padding-top:20px}
+  }
+
+  /* 데스크톱: 경품 카드를 가로형으로 바꿔 제목 아래 두 칸 높이를 맞춤 */
+  @media (min-width: 961px){
+    .hero-body{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+    .prize{display:grid;grid-template-columns:200px minmax(0,1fr);column-gap:24px;align-items:center}
+    .prize .label{grid-column:1 / -1;margin-bottom:14px}
+    .prize .gift{grid-column:1;grid-row:2 / span 2;margin:0;max-width:200px}
+    .prize .big{grid-column:2;grid-row:2;align-self:end;margin:0}
+    .prize .sub{grid-column:2;grid-row:3;align-self:start;font-size:16px}
+    .prize hr,.prize .row{grid-column:1 / -1}
+  }
 </style>
 </head>
 <body>
@@ -251,10 +271,12 @@
 </div>
 
 <header class="hero">
+  <div class="wrap hero-head">
+    <p class="eyebrow"><span>QUIZ EVENT · ~ 2026. 11. 30</span></p>
+    <h1 class="display"><span class="h-line">공부는 AccessPharmacy로 한&nbsp;번에,</span><span class="h-line h-coffee">커피는 원스글로벌이 통크게!</span></h1>
+  </div>
   <div class="wrap hero-body">
     <div>
-      <p class="eyebrow"><span>QUIZ EVENT · ~ 2026. 11. 30</span></p>
-      <h1 class="display"><span class="h-line">공부는 AccessPharmacy로 한&nbsp;번에,</span><span class="h-line h-coffee">커피는 원스글로벌이 통크게!</span></h1>
       <p class="lead">리포트·시험 준비에 필요한 약학 교과서와 문제은행이 한곳에. 퀴즈 풀고 메가커피도 받아 가세요.</p>
       <div class="actions">
         <a class="btn" href="#ACP_FORM_LINK" target="_blank" rel="noopener">지금 퀴즈 풀기</a>
@@ -265,7 +287,7 @@
       <p class="label">참여 혜택</p>
       <img class="gift" src="assets/megacoffee-5000.png" alt="메가MGC커피 5,000원 모바일 금액권">
       <p class="big display">50명</p>
-      <p class="sub">추첨을 통해 메가MGC커피<br>5,000원 모바일 금액권 증정</p>
+      <p class="sub">추첨을 통해 메가MGC커피<br>5,000원 모바일 금액권&nbsp;증정</p>
       <hr>
       <div class="row"><span>이벤트 기간</span><span>~ 2026년 11월 30일(월)</span></div>
       <div class="row"><span>참여 방법</span><span>온라인 퀴즈 제출</span></div>
