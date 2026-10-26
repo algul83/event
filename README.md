@@ -1,11 +1,17 @@
 # Access 퀴즈 이벤트 페이지
 
+퀴즈 풀고 커피쿠폰 받아가세요! 추첨 50명에게 메가MGC커피 5,000원 금액권을 드립니다. (~2026년 11월 30일)
+
+<!-- 위 첫 문단은 카카오톡 등 링크 공유 미리보기의 설명 문구로 쓰입니다. 바꿀 때는 이 문단만 고치세요. -->
+
+## 페이지 구성
+
 | 페이지 | 주소 | 메인 파일 | 내용 파일 |
 |---|---|---|---|
 | AccessMedicine | acm-event.streamlit.app | `app.py` | `index.html` |
 | AccessPharmacy | acp-event.streamlit.app | `acp_app.py` | `acp.html` |
 
-McGraw Hill AccessMedicine 퀴즈 이벤트 안내 페이지입니다. PC·태블릿·모바일 반응형.
+McGraw Hill AccessMedicine·AccessPharmacy 퀴즈 이벤트 안내 페이지입니다. PC·태블릿·모바일 반응형.
 
 ## 파일 구성
 
