@@ -25,7 +25,7 @@
     .share-band h2{font-size:19px}
     .share-band .sb-actions{width:100%}
     .share-band .sb-actions .sb-primary,.share-band .sb-actions .sb-copy{flex:1 1 calc(50% - 4px)}
-    .share-band .sb-actions a{flex:1 1 calc(33.33% - 6px);padding:10px 8px;font-size:14px}
+    .share-band .sb-actions a{flex:1 1 calc(50% - 4px);padding:10px 8px;font-size:14px}
   }
 </style>
 <div class="sb-inner">
@@ -41,7 +41,6 @@
         <button type="button" class="sb-copy">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>링크 복사</button>
         <a class="sb-fb" target="_blank" rel="noopener" href="#">페이스북</a>
-        <a class="sb-band" target="_blank" rel="noopener" href="#">밴드</a>
         <a class="sb-mail" href="#">이메일</a>
       </div>
       <input class="sb-url" type="text" readonly aria-label="공유 링크">
@@ -55,7 +54,6 @@
   var url=root.dataset.url, title=root.dataset.title, text=root.dataset.text;
   var enc=encodeURIComponent;
   root.querySelector('.sb-fb').href='https://www.facebook.com/sharer/sharer.php?u='+enc(url);
-  root.querySelector('.sb-band').href='https://band.us/plugin/share?body='+enc(text+'\n'+url)+'&route='+enc(url);
   root.querySelector('.sb-mail').href='mailto:?subject='+enc(title)+'&body='+enc(text+'\n\n'+url);
   var toast=root.querySelector('.sb-toast'), box=root.querySelector('.sb-url');
   function say(m){toast.textContent=m;clearTimeout(say.t);say.t=setTimeout(function(){toast.textContent='';},3500);fit();}
