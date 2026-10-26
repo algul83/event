@@ -175,6 +175,17 @@
     .family{width:100%}
   }
   .sec-last{padding-bottom:40px}
+
+  .top-actions{display:flex;gap:8px;align-items:center}
+  .top-cta .sm{display:none}
+  .top-quiz{background:var(--accent);border-color:var(--accent)}
+  .top-quiz:hover{background:var(--accent-dark);color:#FFFFFF}
+  .share-anchor{scroll-margin-top:24px}
+  @media (max-width: 600px){
+    .top-actions{gap:6px}
+    .top-cta .lg{display:none}
+    .top-cta .sm{display:inline}
+  }
 </style>
 </head>
 <body>
@@ -186,7 +197,10 @@
       <span class="divider" aria-hidden="true"></span>
       <a href="https://plus.connectdi.com" target="_blank" rel="noopener" aria-label="커넥트디아이 플러스 바로가기"><img src="assets/onesglobal.png" alt="ONES Global"></a>
     </div>
-    <a class="top-cta" href="https://forms.cloud.microsoft/r/tUryMh37NE?origin=lprLink" target="_blank" rel="noopener">퀴즈 참여하기</a>
+    <div class="top-actions">
+      <a class="top-cta top-share" href="#share"><span class="lg">이벤트 공유하기</span><span class="sm">공유</span></a>
+      <a class="top-cta top-quiz" href="https://forms.cloud.microsoft/r/tUryMh37NE?origin=lprLink" target="_blank" rel="noopener"><span class="lg">퀴즈 참여하기</span><span class="sm">퀴즈 참여</span></a>
+    </div>
   </div>
   <div class="wrap hero-body">
     <div>
@@ -262,6 +276,7 @@
       <a class="btn" href="https://forms.cloud.microsoft/r/tUryMh37NE?origin=lprLink" target="_blank" rel="noopener">지금 퀴즈 풀기</a>
     </div>
   </section>
+  <div id="share" class="share-anchor" aria-hidden="true"></div>
 </main>
 
 <!--SHARE:START-->
