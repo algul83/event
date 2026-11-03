@@ -27,7 +27,15 @@ def page_has_app(page) -> bool:
 def main() -> int:
     with sync_playwright() as p:
         browser = p.chromium.launch()
-        page = browser.new_page(viewport={"width": 1280, "height": 900})
+        page = browser.new_page(
+            viewport={"width": 1280, "height": 900},
+            user_agent=("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                        "(KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"),
+        )
+        problems = []
+        page.on("console", lambda m: m.type in ("error", "warning") and problems.append(f"console {m.type}: {m.text[:200]}"))
+        page.on("requestfailed", lambda r: problems.append(f"요청 실패: {r.url[:150]} ({r.failure})"))
+        page.on("response", lambda r: r.status >= 400 and problems.append(f"HTTP {r.status}: {r.url[:150]}"))
         page.goto(URL, wait_until="domcontentloaded", timeout=120_000)
         page.wait_for_timeout(10_000)
 
@@ -50,6 +58,8 @@ def main() -> int:
         print("앱 화면을 확인하지 못했습니다.", file=sys.stderr)
         # 원인 파악용: 최종 주소와 화면 글자를 기록에 남김
         print("최종 주소:", page.url, file=sys.stderr)
+        for line in problems[:25]:
+            print(line, file=sys.stderr)
         for frame in page.frames:
             try:
                 txt = (frame.inner_text("body", timeout=2000) or "").strip().replace("\n", " | ")
