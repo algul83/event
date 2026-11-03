@@ -48,6 +48,14 @@ def main() -> int:
 
         page.screenshot(path="keep_awake_failure.png", full_page=True)
         print("앱 화면을 확인하지 못했습니다.", file=sys.stderr)
+        # 원인 파악용: 최종 주소와 화면 글자를 기록에 남김
+        print("최종 주소:", page.url, file=sys.stderr)
+        for frame in page.frames:
+            try:
+                txt = (frame.inner_text("body", timeout=2000) or "").strip().replace("\n", " | ")
+                print(f"[frame {frame.url}] {txt[:600]}", file=sys.stderr)
+            except Exception as e:
+                print(f"[frame {frame.url}] (읽기 실패: {e})", file=sys.stderr)
         browser.close()
         return 1
 
